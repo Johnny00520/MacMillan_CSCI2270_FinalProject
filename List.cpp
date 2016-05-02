@@ -137,7 +137,7 @@ void List::deleteWithinCat(string catDelete)
         {
             tmp2 = tmp->next;
             removeItem(tmp->name, -1);
-            tmp = tmp2;
+            //tmp = tmp2; I don't think you need this line
         }
         else
             tmp = tmp->next;
