@@ -44,9 +44,23 @@ void List::addItem(string in_name, string in_cat, int in_price, int in_amount)
 
 void List::removeItem(string name, int delAmount)
 {
+    /**This function looks good, but if you do not have anything on the list in the first place and you delete it
+    , it will give you seg-fault*/
+    /**If users type wrong name, it will give seg-fault*/
     listItem *tmp = root;
-    while (tmp->name != name && tmp != NULL)
-        tmp = tmp->next;
+    /**doing this would be safer, and we should check if tmp is NULL
+       What you did wouldn't check when tmp is NULL*/
+    while (tmp != NULL)
+    {
+        if(tmp->name != name)
+        {
+            tmp = tmp->next;
+        }
+        else
+        {
+            break;
+        }
+    }
     if (tmp != NULL)
     {
         if (tmp->amount == delAmount)
